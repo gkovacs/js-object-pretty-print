@@ -33,7 +33,10 @@ value = {
     'name': 'Damaso Infanzon Manzo',
     'address': address,
     'favorites': {
-    'music': ['Mozart', 'Beethoven', 'The Beatles'],  'authors': ['John Grisham', 'Isaac Asimov', 'P.L. Travers'], 'books': [ 'Pelican Brief', 'I, Robot', 'Mary Poppins' ] },
+        'music': ['Mozart', 'Beethoven', 'The Beatles'],
+        'authors': ['John Grisham', 'Isaac Asimov', 'P.L. Travers'],
+        'books': [ 'Pelican Brief', 'I, Robot', 'Mary Poppins' ]
+    },
     'dates': [ new Date(), new Date("05/25/1954") ],
     'numbers': [ 10, 883, 521 ],
     'boolean': [ true, false, false, false ],
@@ -107,14 +110,19 @@ A boolean to determine to expand all the text of a function or to display only t
 }
 }
 ```
+Notice that the program does not attempt to pretty print the function. It is rendered as written.
 
 Expected behavior
 * **PRINT** Indentation is done with the space character, line breaks are done with the newLine character "\n" and the attribute names are not surrounded with quotes. Pretty similar to what you see in the -webkit debugger
 * **HTML** Indentation is done with non breakable spaces &amp;nbsp; line breaks are done with &lt;br/&gt;. Otherwise identical to print. Handy to dump into a div inside a page and get a decent formatting
 * **JSON** Only difference with PRINT is that attribute names are surrounded with quotes
 
+## Circular references
+Sometimes some objects have circular references. This will can cause a heap overflow if not dealt properly. The code now detects circular references and stop inspecting the object
+
 ## Release History
 * 0.1.0 Initial Release
 * 0.1.1 Bug fixes
 * 0.1.2 Add JSON output, create robust testing with Mocha, add minified version of the code
+* 0.1.3 Circular reference detection, option to print only the signature of functions
 

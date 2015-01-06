@@ -11,17 +11,46 @@ npm install js-object-pretty-print
 
 ```
 var pretty = require('js-object-pretty-print').pretty,
-    foo = {
-        "aString": "ipsum lorem",
-        "aNumber": 3
-        "anArray": ["shoes", "socks", "shirts"],
-        "anObject": {
-            "aValue": 44,
-            "isValid": true
-        }
-    };
+    address,
+    value;
 
-process.stdout.write(pretty(foo));
+function onAnother(foo, bar) {
+    var lola;
+
+    lola = foo + bar;
+    return lola;
+}
+
+address = {
+    'street': 'Callejon de las ranas 128',
+    'city': 'Falfurrias',
+    'state':
+    'Texas',
+    'zip': '88888-9999'
+};
+
+value = {
+    'name': 'Damaso Infanzon Manzo',
+    'address': address,
+    'favorites': {
+    'music': ['Mozart', 'Beethoven', 'The Beatles'],  'authors': ['John Grisham', 'Isaac Asimov', 'P.L. Travers'], 'books': [ 'Pelican Brief', 'I, Robot', 'Mary Poppins' ] },
+    'dates': [ new Date(), new Date("05/25/1954") ],
+    'numbers': [ 10, 883, 521 ],
+    'boolean': [ true, false, false, false ],
+    'isObject': true,
+    'isDuck': false,
+    'onWhatever': function (foo, bar) {
+        var lola;
+
+        lola = foo + bar;
+        return lola;
+    },
+    'onAnother': onAnother
+};
+
+address.value = value;
+
+console.log(pretty(value));
 ```
 
 It is also possible to use a minified version of the code
@@ -36,9 +65,9 @@ Either the full or the minified versions render the same. Both are unit tested w
 
 ## Options
 
-Function pretty accepts three arguments:
+Function pretty accepts four arguments:
 
-    pretty(object, indentSize, outputTo);
+    pretty(object, indentSize, outputTo, fullFunction);
 
 ### object (mandatory)
 Is the javascript object to serialize. If no object is present the function will return a string with an error.
@@ -48,6 +77,32 @@ Number of spaces in a one level indent. Default 4
 
 ### outputTo (optional)
 String to determine the formatting of the output. One of "PRINT", "HTML" or "JSON". This argument is case insensitive. Default value is "PRINT"
+
+### fullFunction
+A boolean to determine to expand all the text of a function or to display only the signature. The default value is to display only the signature, that is the word **function** followed by the function name, if any, followed by the arguments of the function in parenthesis.
+* **fullFunction == false** Passing the object above will result in
+{
+...
+    onWhatever: "function (foo, bar)",
+    onAnother: "function onAnother(foo, bar)"
+}
+
+* **fullFunction == true** Passing the object above will result in
+{
+...
+    onWhatever: function (foo, bar) {
+        var lola;
+
+        lola = foo + bar;
+        return lola;
+    },
+    onAnother: function onAnother(foo, bar) {
+    var lola;
+
+    lola = foo + bar;
+    return lola;
+}
+}
 
 Expected behavior
 * **PRINT** Indentation is done with the space character, line breaks are done with the newLine character "\n" and the attribute names are not surrounded with quotes. Pretty similar to what you see in the -webkit debugger

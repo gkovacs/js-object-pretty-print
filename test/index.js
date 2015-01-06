@@ -39,6 +39,7 @@ address.value = value;
 describe('Object serialized for print', function () {
     var serialized, index;
     serialized = pretty(value, 4, 'print');
+    console.log(serialized);
     it('Serialized object', function () {
         assert.isNotNull(serialized, 'This should never be null');
         assert.equal(typeof serialized, 'string');
@@ -105,6 +106,7 @@ describe('Object serialized with full function expansion', function () {
     ];
 
     serialized = pretty(value, 4, 'print', true);
+    console.log(serialized);
     it('Full function expand', function () {
         index = 0;
         for (row = 0; row < functionLiteral.length; row += 1) {

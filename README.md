@@ -81,13 +81,16 @@ String to determine the formatting of the output. One of "PRINT", "HTML" or "JSO
 ### fullFunction
 A boolean to determine to expand all the text of a function or to display only the signature. The default value is to display only the signature, that is the word **function** followed by the function name, if any, followed by the arguments of the function in parenthesis.
 * **fullFunction == false** Passing the object above will result in
+```
 {
 ...
     onWhatever: "function (foo, bar)",
     onAnother: "function onAnother(foo, bar)"
 }
+```
 
 * **fullFunction == true** Passing the object above will result in
+```
 {
 ...
     onWhatever: function (foo, bar) {
@@ -103,6 +106,7 @@ A boolean to determine to expand all the text of a function or to display only t
     return lola;
 }
 }
+```
 
 Expected behavior
 * **PRINT** Indentation is done with the space character, line breaks are done with the newLine character "\n" and the attribute names are not surrounded with quotes. Pretty similar to what you see in the -webkit debugger

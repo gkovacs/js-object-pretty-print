@@ -31,7 +31,9 @@ value = {
         lola = foo + bar;
         return lola;
     },
-    'onAnother': onAnother
+    'onAnother': onAnother,
+    'foo': undefined,
+    err: new Error('This is an error')
 };
 
 address.value = value;

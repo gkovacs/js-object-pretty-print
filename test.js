@@ -1,7 +1,6 @@
 "use strict";
 
 var address,
-    error,
     value,
     pretty;
 
@@ -15,7 +14,6 @@ function onAnother(foo, bar) {
 }
 
 address = { 'street': 'Callejon de las ranas 128', 'city': 'Falfurrias', 'state': 'Texas', 'zip': '88888-9999' };
-error = new Error('Found an error');
 
 value = {
     'name': 'Damaso Infanzon Manzo',
@@ -34,6 +32,6 @@ value = {
     },
     'onAnother': onAnother,
     'foo': undefined,
-    err: error
+    err: new Error('This is a bad error')
 };
 process.stdout.write(pretty(value));

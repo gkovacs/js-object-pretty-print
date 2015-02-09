@@ -131,7 +131,10 @@ module.exports.pretty = function (jsObject, indentLength, outputTo, fullFunction
                 return fromArray + '"undefined"';
 
             default:
-                return fromArray + element.toString();
+                if (element.toString) {
+                    return fromArray + '"' + element.toString() + '"';
+                }
+                return fromArray + '<<<ERROR>>> Cannot get the string value of the element';
             }
         }
         return fromArray + 'circular reference to ' + element.toString();

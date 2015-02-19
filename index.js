@@ -122,7 +122,7 @@ module.exports.pretty = function (jsObject, indentLength, outputTo, fullFunction
                 return fromArray + '{' + newLine + prettyObject(element, indent) + indent + '}';
 
             case 'string':
-                return fromArray + '"' + element + '"';
+                return fromArray + JSON.stringify(element);
 
             case 'function':
                 return fromArray + functionSignature(element);

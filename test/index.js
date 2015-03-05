@@ -19,6 +19,7 @@ address = { 'street': 'Callejon de las ranas 128', 'city': 'Falfurrias', 'state'
 value = {
     'name': 'Damaso Infanzon Manzo',
     'address': address,
+    'longString': "one\ntwo\n\"three\"",
     'favorites': { 'music': ['Mozart', 'Beethoven', 'The Beatles'],  'authors': ['John Grisham', 'Isaac Asimov', 'P.L. Travers'], 'books': [ 'Pelican Brief', 'I, Robot', 'Mary Poppins' ] },
     'dates': [ new Date(), new Date("05/25/1954") ],
     'numbers': [ 10, 883, 521 ],
@@ -85,6 +86,10 @@ describe('Object serialized for print', function () {
     it('Functions found', function () {
         assert.notEqual(serialized.indexOf('onWhatever: "function (foo, bar)"'), -1);
         assert.notEqual(serialized.indexOf('onAnother: "function onAnother(foo, bar)"'), -1);
+    });
+
+    it('renders strings with escapes', function () {
+        assert.notEqual(serialized.indexOf('longString: "one\\ntwo\\n\\"three\\""'), -1);
     });
 });
 

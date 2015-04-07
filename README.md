@@ -125,4 +125,4 @@ Sometimes some objects have circular references. This will can cause a heap over
 * 0.1.1 Bug fixes
 * 0.1.2 Add JSON output, create robust testing with Mocha, add minified version of the code
 * 0.1.3 Circular reference detection, option to print only the signature of functions
-
+* 0.1.4 Better processing of undefined or null values

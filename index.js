@@ -130,6 +130,9 @@ module.exports.pretty = function (jsObject, indentLength, outputTo, fullFunction
             case 'undefined':
                 return fromArray + '"undefined"';
 
+            case 'null':
+                return fromArray + 'null';
+
             default:
                 if (element.toString) {
                     return fromArray + '"' + element.toString() + '"';

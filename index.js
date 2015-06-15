@@ -128,7 +128,7 @@ module.exports.pretty = function (jsObject, indentLength, outputTo, fullFunction
                 return fromArray + functionSignature(element);
 
             case 'undefined':
-                return fromArray + '"undefined"';
+                return fromArray + 'undefined';
 
             case 'null':
                 return fromArray + 'null';

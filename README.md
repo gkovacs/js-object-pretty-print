@@ -114,11 +114,14 @@ Notice that the program does not attempt to pretty print the function. It is ren
 
 Expected behavior
 * **PRINT** Indentation is done with the space character, line breaks are done with the newLine character "\n" and the attribute names are not surrounded with quotes. Pretty similar to what you see in the -webkit debugger
-* **HTML** Indentation is done with non breakable spaces &amp;nbsp; line breaks are done with &lt;br/&gt;. Otherwise identical to print. Handy to dump into a div inside a page and get a decent formatting
+* **HTML** Indentation is done with non breakable spaces &amp;nbsp; line breaks are done with &lt;br/&gt;. Otherwise identical to **JSON**. Handy to dump into a div inside a page and get a decent formatting
 * **JSON** Only difference with PRINT is that attribute names are surrounded with quotes
 
 ## Circular references
 Sometimes some objects have circular references. This will can cause a heap overflow if not dealt properly. The code now detects circular references and stop inspecting the object
+
+## null and undefined
+Objects and properties with value null or undefined are now properly reported.
 
 ## Release History
 * 0.1.0 Initial Release
@@ -126,3 +129,4 @@ Sometimes some objects have circular references. This will can cause a heap over
 * 0.1.2 Add JSON output, create robust testing with Mocha, add minified version of the code
 * 0.1.3 Circular reference detection, option to print only the signature of functions
 * 0.1.4 Better processing of undefined or null values
+* 0.2.0 Fixed several bugs, including proper treatment of null and undefined values. The output for HTML now has the property names enclosed in quotes.

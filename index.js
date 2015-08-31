@@ -150,7 +150,7 @@ module.exports.pretty = function (jsObject, indentLength, outputTo, fullFunction
 
         outputTo = (outputTo || 'print').toLowerCase();
         indentString = repeatString(outputTo === 'html' ? '&nbsp;' : ' ', indentLength);
-        prettyObject = outputTo === 'json' ? prettyObjectJSON : prettyObjectPrint;
+        prettyObject = outputTo === 'print' ? prettyObjectPrint : prettyObjectJSON;
         newLine = outputTo === 'html' ? '<br/>' : '\n';
         newLineJoin = ',' + newLine;
         visited = [];

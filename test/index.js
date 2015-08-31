@@ -5,7 +5,8 @@ var assert = require('chai').assert,
     pretty = require('../index').pretty,
     prettyMin = require('../index-min').pretty,
     address,
-    value;
+    value,
+    undefinedValue;
 
 function onAnother(foo, bar) {
     var lola;
@@ -33,8 +34,9 @@ value = {
         return lola;
     },
     'onAnother': onAnother,
-    'foo': undefined,
-    err: new Error('This is an error')
+    'foo': undefinedValue,
+    'thisShouldBeNull': null,
+    'err': new Error('This is an error')
 };
 
 address.value = value;
@@ -138,6 +140,8 @@ describe('Object serialized for JSON', function () {
         assert.notEqual(serialized.indexOf('        "city":'), -1);
         assert.notEqual(serialized.indexOf('        "state":'), -1);
         assert.notEqual(serialized.indexOf('        "zip":'), -1);
+        assert.notEqual(serialized.indexOf('    "foo": undefined'), -1);
+        assert.notEqual(serialized.indexOf('    "thisShouldBeNull": null'), -1);
     });
 });
 
@@ -150,12 +154,12 @@ describe('Object serialized for HTML', function () {
     });
 
     it('Indentation for HTML', function () {
-        assert.notEqual(serialized.indexOf('&nbsp;&nbsp;&nbsp;&nbsp;name: "Damaso Infanzon Manzo"'), -1);
-        assert.notEqual(serialized.indexOf('&nbsp;&nbsp;&nbsp;&nbsp;address:'), -1);
-        assert.notEqual(serialized.indexOf('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;street:'), -1);
-        assert.notEqual(serialized.indexOf('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;city:'), -1);
-        assert.notEqual(serialized.indexOf('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state:'), -1);
-        assert.notEqual(serialized.indexOf('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zip:'), -1);
+        assert.notEqual(serialized.indexOf('&nbsp;&nbsp;&nbsp;&nbsp;"name": "Damaso Infanzon Manzo"'), -1);
+        assert.notEqual(serialized.indexOf('&nbsp;&nbsp;&nbsp;&nbsp;"address":'), -1);
+        assert.notEqual(serialized.indexOf('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"street":'), -1);
+        assert.notEqual(serialized.indexOf('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"city":'), -1);
+        assert.notEqual(serialized.indexOf('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"state":'), -1);
+        assert.notEqual(serialized.indexOf('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"zip":'), -1);
         assert.notEqual(serialized.indexOf('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true,'), -1);
         assert.notEqual(serialized.indexOf('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;false'), -1);
     });

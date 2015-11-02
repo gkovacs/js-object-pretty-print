@@ -119,6 +119,9 @@ module.exports.pretty = function (jsObject, indentLength, outputTo, fullFunction
 
             case 'object':
                 visited.push(element);
+                if (Object.keys(element).length === 0) {
+                    return fromArray + '{ }';
+                }
                 return fromArray + '{' + newLine + prettyObject(element, indent) + indent + '}';
 
             case 'string':

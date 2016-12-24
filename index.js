@@ -163,6 +163,9 @@ module.exports.pretty = function (jsObject, indentLength, outputTo, fullFunction
         visited = [];
         return pretty(jsObject, '') + newLine;
     }
+    if (jsObject === null) {
+        return 'null';
+    }
 
     return 'Error: no Javascript object provided';
 };

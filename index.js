@@ -107,6 +107,9 @@ module.exports.pretty = function (jsObject, indentLength, outputTo, fullFunction
             switch (type) {
             case 'array':
                 visited.push(element);
+                if (element.length === 0) {
+                    return fromArray + '[ ]';
+                }
                 return fromArray + '[' + newLine + prettyArray(element, indent) + indent + ']';
 
             case 'boolean':
@@ -120,6 +123,9 @@ module.exports.pretty = function (jsObject, indentLength, outputTo, fullFunction
 
             case 'object':
                 visited.push(element);
+                if (Object.keys(element).length === 0) {
+                    return fromArray + '{ }';
+                }
                 return fromArray + '{' + newLine + prettyObject(element, indent) + indent + '}';
 
             case 'string':

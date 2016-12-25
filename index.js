@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports.pretty = function (jsObject, indentLength, outputTo, fullFunction) {
+module.exports = function (jsObject, indentLength, outputTo, fullFunction) {
     var indentString,
         newLine,
         newLineJoin,

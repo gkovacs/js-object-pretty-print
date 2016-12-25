@@ -1,16 +1,16 @@
-js-object-pretty-print
+prettyprintjs
 ======================
 
 Serializes a javascript object to a printable string. String is formatted to be used in a pure text environments, like a console log, as an HTML output,  or to create a JSON string.
 
 ## Installation
 
-npm install js-object-pretty-print
+npm install prettyprintjs
 
 ## Usage
 
 ```
-var pretty = require('js-object-pretty-print').pretty,
+var pretty = require('prettyprintjs'),
     address,
     value;
 
@@ -60,7 +60,7 @@ It is also possible to use a minified version of the code
 
 ```
 ...
-var prettyMin = require('js0object-pretty-print/index-min.js').pretty;
+var prettyMin = require('prettyprintjs/index-min.js');
 ...
 ```
 

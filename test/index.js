@@ -2,8 +2,8 @@
 "use strict";
 
 var assert = require('chai').assert,
-    pretty = require('../index').pretty,
-    prettyMin = require('../index-min').pretty,
+    pretty = require('../index'),
+    prettyMin = require('../index-min'),
     address,
     value,
     undefinedValue;

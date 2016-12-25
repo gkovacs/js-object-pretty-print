@@ -147,7 +147,10 @@ module.exports.pretty = function (jsObject, indentLength, outputTo, fullFunction
                 return fromArray + '<<<ERROR>>> Cannot get the string value of the element';
             }
         }
-        return fromArray + 'circular reference to ' + element.toString();
+        if (element && (typeof element.toString) === 'function') {
+            return fromArray + 'circular reference to ' + element.toString();
+        }
+        return fromArray + 'circular reference';
     };
 
     if (jsObject) {

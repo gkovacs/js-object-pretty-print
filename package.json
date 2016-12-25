@@ -1,6 +1,6 @@
 {
-  "name": "js-object-pretty-print",
-  "version": "0.1.4",
+  "name": "prettyprintjs",
+  "version": "0.1.5",
   "description": "Serializes a javascript object to a printable string. String is formatted to be used in either pure text environments, like a console log or in HTML or to create a JSON output.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cvadillo/js-object-pretty-print.git"
+    "url": "https://github.com/gkovacs/prettyprintjs.git"
   },
   "keywords": [
     "Javascript",
@@ -19,9 +19,9 @@
   "author": "Carlos M. Vadillo <carlos.vadillo@gmail.com> (http://carlosvadillo.com/)",
   "license": "Apache V2",
   "bugs": {
-    "url": "https://github.com/cvadillo/js-object-pretty-print/issues"
+    "url": "https://github.com/gkovacs/prettyprintjs/issues"
   },
-  "homepage": "https://github.com/cvadillo/js-object-pretty-print",
+  "homepage": "https://github.com/gkovacs/prettyprintjs",
   "devDependencies": {
     "chai": "^1.9.1",
     "grunt": "^0.4.5",

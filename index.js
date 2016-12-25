@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function (jsObject, indentLength, outputTo, fullFunction) {
+module.exports = function (jsObject, indentLength, outputTo, fullFunction, max_calls_made) {
     var indentString,
         newLine,
         newLineJoin,
@@ -14,9 +14,15 @@ module.exports = function (jsObject, indentLength, outputTo, fullFunction) {
         prettyArray,
         functionSignature,
         pretty,
+        calls_made,
         visited;
 
     TOSTRING = Object.prototype.toString;
+
+    calls_made = 0;
+    if (!max_calls_made) {
+        max_calls_made = 10;
+    }
 
     TYPES = {
         'undefined'        : 'undefined',
@@ -65,6 +71,10 @@ module.exports = function (jsObject, indentLength, outputTo, fullFunction) {
     };
 
     prettyObjectPrint = function (object, indent) {
+        if (calls_made > max_calls_made) {
+            return '[object]';
+        }
+        calls_made += 1;
         var value = [],
             property;
 

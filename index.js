@@ -53,7 +53,11 @@ module.exports = function (jsObject, indentLength, outputTo, fullFunction) {
         indent += indentString;
         for (property in object) {
             if (object.hasOwnProperty(property)) {
-                value.push(indent + '"' + property + '": ' + pretty(object[property], indent));
+                try {
+                    value.push(indent + '"' + property + '": ' + pretty(object[property], indent));
+                } catch (err) {
+                    value.push(indent + '"' +  property + '": ' + pretty('unprintable', indent));
+                }
             }
         }
 
@@ -67,7 +71,11 @@ module.exports = function (jsObject, indentLength, outputTo, fullFunction) {
         indent += indentString;
         for (property in object) {
             if (object.hasOwnProperty(property)) {
-                value.push(indent + property + ': ' + pretty(object[property], indent));
+                try {
+                    value.push(indent + property + ': ' + pretty(object[property], indent));
+                } catch (err) {
+                    value.push(indent + property + ': ' + pretty('unprintable', indent));
+                }
             }
         }
 
